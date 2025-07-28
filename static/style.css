@@ -1,0 +1,188 @@
+:root {
+            --primary-color: #4CAF50; /* A friendly green */
+            --secondary-color: #f0f2f5; /* Light grey for background */
+            --text-color: #333;
+            --border-color: #ddd;
+            --input-bg: #fff;
+            --chat-bubble-user: #DCF8C6; /* Light green for user messages */
+            --chat-bubble-ai: #FFFFFF; /* White for AI messages */
+            --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            margin: 0;
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color);
+            padding: 20px; /* Add some padding for smaller screens */
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+
+        .chat-container {
+            background-color: var(--input-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            width: 90%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 80vh; /* Make container fill more of the viewport height */
+            min-height: 450px; /* Minimum height for usability */
+        }
+
+        h1 {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            margin: 0;
+            font-size: 1.6em;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            box-shadow: var(--shadow-light); /* Shadow for header */
+            z-index: 1; /* Ensure header shadow is above chat box */
+        }
+
+        #chat-box {
+            flex-grow: 1;
+            padding: 15px; /* Reduced padding slightly for more message space */
+            overflow-y: auto;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Space between message bubbles */
+        }
+
+        .message-bubble {
+            max-width: 75%; /* Slightly smaller bubbles */
+            padding: 10px 15px;
+            border-radius: 18px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08); /* Subtle shadow for bubbles */
+        }
+
+        .user-message {
+            background-color: var(--chat-bubble-user);
+            align-self: flex-end; /* Align user messages to the right */
+            border-bottom-right-radius: 2px; /* A slight corner for user message */
+        }
+
+        .ai-message {
+            background-color: var(--chat-bubble-ai);
+            border: 1px solid var(--border-color); /* Add a light border for AI messages */
+            align-self: flex-start; /* Align AI messages to the left */
+            border-bottom-left-radius: 2px; /* A slight corner for AI message */
+        }
+
+        .message-sender {
+            display: block;
+            font-size: 0.8em;
+            color: #666;
+            margin-bottom: 2px;
+            font-weight: bold;
+        }
+
+        .input-area {
+            display: flex;
+            padding: 15px 20px;
+            border-top: 1px solid var(--border-color);
+            background-color: #f9f9f9;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            gap: 10px; /* Space between input and button */
+        }
+
+        #user-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            outline: none;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #user-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap; /* Prevent button text from wrapping */
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+            background-color: #398e3d;
+        }
+
+        /* Scrollbar styles for WebKit browsers */
+        #chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #chat-box::-webkit-scrollbar-track {
+            background: var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        #chat-box::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        #chat-box::-webkit-scrollbar-thumb:hover {
+            background: #45a049;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .chat-container {
+                width: 95%;
+                height: 90vh; /* Adjust height for mobile */
+                margin: 0;
+            }
+
+            h1 {
+                font-size: 1.4em;
+            }
+
+            .input-area {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            #user-input {
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 100%; /* Full width on mobile */
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .message-bubble {
+                max-width: 85%; /* Allow bubbles to be a bit wider on small screens */
+            }
+        }
