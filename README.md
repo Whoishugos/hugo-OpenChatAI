@@ -1,4 +1,4 @@
-# 🤖 OpenChatAI
+# 🤖 Hugo-OpenChatAI
 
 A simple and elegant AI Chat Assistant built with FastAPI backend and clean HTML/CSS/JavaScript frontend, powered by Ollama language models.
 
